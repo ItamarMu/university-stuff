@@ -1,0 +1,4 @@
+coin: PENNY value: 1 color: copper
+coin: NICKLE value: 5 color: bronze
+coin: DIME value: 10 color: silver
+coin: QUARTER value: 25 color: silver
