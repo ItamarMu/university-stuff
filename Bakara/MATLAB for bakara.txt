@@ -1,0 +1,87 @@
+A=[1,2;3,4];
+B=[1;2;3];
+B(1)=A(2,2);
+size(A);
+t=linspace(2,10,5);
+t=logspace(10,100,5);
+
+C1=[1,0,1;1,1,1];
+C2=[2;2;2];
+C3=C1*C2;
+
+x1=[1 2 1];
+x2=3+x1;
+
+%eigen values
+A=[2 2;0 4];
+x=eig(A);
+x(2);
+
+% . operator
+A=[1 1;1 1];
+B=[2 2;2 2];
+A*B;
+A.*B;
+
+%Convolution
+u=[1 2 3];
+v=[4 5 6];
+conv(u,v); %equal to polynomial multiplication
+
+%Plot
+t=linspace(-20,20); %equal to linspace(-20,20,100), 100 is default value
+y1=t.^2.+3.*t+4;
+y2=t.^2;
+% plot(t,y1,t,y2);
+% grid;
+% xlabel('time');
+% ylabel('wow');
+% title('that plot');
+
+%Second plot:
+%figure; %without it the first plot will be ran over by the second plot
+%plot(t,y1,'g>--',t,y2); %colors: b/g/r/c/m/y/k, dotType: ./o/x/+/*/s/d/v/^/</>/p/h, lineType: -/:/-./--
+
+% Transfer function:
+sys=tf([1 2],[1 1 1 1]); %den and num
+sys2=zpk([1 0],[3 1 1],2); %Define by zeros, poles, and amplification
+mult=sys*sys2;
+
+% Find sensability:
+P1 = tf([1 0],[2 1]);
+S=1/(1+P1);
+
+% Find feedback:
+sys=feedback(sys,sys2);
+
+% tf2ss
+[A,B,C,D]=tf2ss([1 2],[1 1 1 1]);
+
+%ss2tf
+[num,den]=ss2tf(A,B,C,D); %get num and den from A,B,C,D
+%also zp2ss and ss2zp for functions defined by zeros and poles
+
+%Bode
+%bode(sys2);
+%grid;
+
+%Root Locus
+%rlocus(sys2)
+
+
+%Nyquist, also nyquist1 function and nyqlog function
+% nyquist(sys2)
+% grid
+
+%Nichols
+% nichols(sys2)
+% grid
+
+
+
+
+
+
+
+
+
